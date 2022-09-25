@@ -13,8 +13,18 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
+app.get('/', (req, res) => {
+	return res.send(<html>
+		<head>
+			<title>Welcome to Invoice backend</title>
+		</head>
+		<body>
+			<h1>Congratulations! The Invoice backend website is working!</h1>
+		</body>
+	</html>)
+})
 app.use("/users", userRoutes)
 
 mongoose.connect(process.env.MONGO_URI, {
